@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>繁体字学习 · 描红练习</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+
+    body {
+      background: linear-gradient(145deg, #f9f4e9 0%, #efe6d5 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      font-family: 'Noto Serif TC', 'KaiTi', '楷体', sans-serif;
+      padding: 16px;
+    }
+
+    .app-container {
+      max-width: 1200px;
+      width: 100%;
+      background: #fffdf8;
+      border-radius: 40px;
+      box-shadow: 0 25px 40px -12px rgba(90, 60, 30, 0.35), 0 4px 18px rgba(0, 0, 0, 0.05);
+      padding: 30px 28px 40px;
+      border: 1px solid #e5d9c6;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 600;
+      font-size: 2rem;
+      letter-spacing: 6px;
+      color: #5e3e2b;
+      margin-bottom: 8px;
+      text-shadow: 2px 2px 0 #f0e4d2;
+    }
+
+    .subhead {
+      text-align: center;
+      font-size: 1rem;
+      color: #a78b74;
+      margin-bottom: 20px;
+      font-style: italic;
+      letter-spacing: 2px;
+    }
+
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .search-bar input {
+      font-family: 'Noto Serif TC', sans-serif;
+      font-size: 1.1rem;
+      padding: 10px 20px;
+      border-radius: 60px;
+      border: 2px solid #ddcdb8;
+      background: #fffcf7;
+      color: #4a3828;
+      outline: none;
+      width: 280px;
+      max-width: 70vw;
+      transition: all 0.2s;
+    }
+
+    .search-bar input:focus {
+      border-color: #a38363;
+      box-shadow: 0 0 0 4px rgba(163, 131, 99, 0.15);
+    }
+
+    .search-bar button {
+      background: #e7d9c9;
+      border: 1px solid #d6c3ae;
+      border-radius: 60px;
+      padding: 10px 24px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #5b4432;
+      cursor: pointer;
+      font-family: 'Noto Serif TC', sans-serif;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 0 #b8a084;
+      letter-spacing: 1px;
+    }
+
+    .search-bar button:hover {
+      background: #dbcbb9;
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #b8a084;
+    }
+
+    .learning-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      justify-content: center;
+    }
+
+    .info-card {
+      flex: 1 1 300px;
+      background: #fefbf5;
+      border-radius: 32px;
+      padding: 28px 22px;
+      border: 1px solid #e3d5c0;
+      box-shadow: inset 0 1px 6px #fff9f0, 0 12px 18px -10px rgba(120, 80, 50, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .character-pair {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .char-box { text-align: center; }
+
+    .char-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #b8a187;
+      margin-bottom: 6px;
+      font-weight: 400;
+    }
+
+    .big-char {
+      font-size: 5.5rem;
+      line-height: 1.2;
+      font-weight: 600;
+      font-family: 'Noto Serif TC', 'KaiTi', '楷体', serif;
+      color: #3e2c1d;
+      background: #f6efe4;
+      border-radius: 24px;
+      padding: 10px 28px;
+      box-shadow: 0 2px 0 #cbb295, 0 6px 12px rgba(150, 110, 70, 0.2);
+      display: inline-block;
+      min-width: 150px;
+    }
+
+    .big-char.simplified {
+      font-family: 'Noto Serif TC', 'KaiTi', '楷体', sans-serif;
+      font-weight: 500;
+      color: #5e4d3b;
+      background: #f1e9dd;
+      box-shadow: 0 2px 0 #b8a58c;
+    }
+
+    .arrow-symbol {
+      font-size: 2.8rem;
+      color: #c5aa8b;
+      font-weight: 300;
+    }
+
+    .meaning-section {
+      background: #f3ede3;
+      border-radius: 24px;
+      padding: 20px 22px;
+      margin-top: 8px;
+    }
+
+    .meaning-title {
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      color: #9f8469;
+      margin-bottom: 12px;
+      border-bottom: 1px dashed #cdb8a2;
+      padding-bottom: 6px;
+    }
+
+    .meaning-text {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #4a3828;
+      font-weight: 400;
+      word-break: break-word;
+      min-height: 60px;
+    }
+
+    .meaning-text .pinyin {
+      color: #9f8469;
+      font-size: 0.95rem;
+      font-style: italic;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .trace-card {
+      flex: 1 1 420px;
+      background: #fefbf5;
+      border-radius: 32px;
+      padding: 24px 22px 22px;
+      border: 1px solid #e3d5c0;
+      box-shadow: inset 0 1px 6px #fff9f0, 0 12px 18px -10px rgba(120, 80, 50, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .trace-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 16px;
+      padding: 0 6px;
+    }
+
+    .trace-header h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #5e3e2b;
+      letter-spacing: 2px;
+    }
+
+    .btn-clear {
+      background: #e7d9c9;
+      border: none;
+      border-radius: 60px;
+      padding: 8px 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #5b4432;
+      cursor: pointer;
+      font-family: 'Noto Serif TC', sans-serif;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 0 #b8a084;
+      letter-spacing: 1px;
+      border: 1px solid #d6c3ae;
+    }
+
+    .btn-clear:hover {
+      background: #dbcbb9;
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #b8a084;
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-width: 380px;
+      margin: 6px auto 18px;
+      border-radius: 30px;
+      background: #fffcf7;
+      box-shadow: 0 0 0 1px #e3d5c0, 0 12px 20px -12px #b8a48b;
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    #traceCanvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      cursor: crosshair;
+      background: #fffcf7;
+      border-radius: 30px;
+    }
+
+    .grid-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      border-radius: 30px;
+      background-image:
+        linear-gradient(to right, #ddd0bf 1px, transparent 1px),
+        linear-gradient(to bottom, #ddd0bf 1px, transparent 1px);
+      background-size: 25% 25%;
+      opacity: 0.4;
+    }
+
+    .hint {
+      font-size: 0.9rem;
+      color: #a78b74;
+      text-align: center;
+      margin-top: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .pagination button {
+      background: #fff3e6;
+      border: 2px solid #ddcdb8;
+      color: #604a36;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 60px;
+      padding: 8px 22px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 #cbb59c;
+      font-family: 'Noto Serif TC', sans-serif;
+    }
+
+    .pagination button:hover:not(:disabled) {
+      background: #f5e6d4;
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #cbb59c;
+    }
+
+    .pagination button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .page-info {
+      color: #7c6a58;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+    }
+
+    .char-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+      padding: 16px;
+      background: #f9f4e9;
+      border-radius: 24px;
+      border: 1px solid #e5d8c6;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+
+    .char-grid::-webkit-scrollbar { width: 8px; }
+    .char-grid::-webkit-scrollbar-thumb {
+      background: #cbb59c;
+      border-radius: 8px;
+    }
+
+    .char-btn {
+      background: #fffcf7;
+      border: 2px solid #ddcdb8;
+      color: #604a36;
+      font-size: 1.5rem;
+      font-weight: 500;
+      font-family: 'Noto Serif TC', 'KaiTi', '楷体', serif;
+      border-radius: 16px;
+      padding: 8px 4px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      box-shadow: 0 3px 0 #cbb59c;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .char-btn:hover {
+      background: #f5e6d4;
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #cbb59c;
+    }
+
+    .char-btn.active {
+      background: #d9c7b1;
+      border-color: #a38363;
+      color: #2b1e12;
+      box-shadow: 0 1px 0 #856e53;
+      transform: translateY(2px);
+      font-weight: 700;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 30px;
+      color: #c5af98;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+    }
+
+    .loading, .error-msg {
+      text-align: center;
+      padding: 40px;
+      font-size: 1.1rem;
+      color: #a78b74;
+    }
+
+    .error-msg { color: #b55; }
+
+    @media (max-width: 680px) {
+      .app-container { padding: 18px 14px 28px; }
+      h1 { font-size: 1.7rem; letter-spacing: 3px; }
+      .big-char { font-size: 4rem; min-width: 110px; padding: 6px 18px; }
+      .char-btn { font-size: 1.2rem; }
+      .meaning-text { font-size: 1.05rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <h1>✧ 繁体字学习 ✧</h1>
+    <div class="subhead">简繁对照 · 字义解释 · 笔顺描红</div>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="输入繁体字或简体字搜索…" maxlength="1">
+      <button id="searchBtn">🔍 搜索</button>
+    </div>
+
+    <div id="loadingMsg" class="loading">📖 正在加载字库，请稍候…</div>
+    <div id="errorMsg" class="error-msg" style="display:none;"></div>
+
+    <div id="mainContent" style="display:none;">
+      <div class="learning-panel">
+        <div class="info-card">
+          <div class="character-pair">
+            <div class="char-box">
+              <div class="char-label">繁体</div>
+              <div class="big-char" id="tradDisplay">學</div>
+            </div>
+            <div class="arrow-symbol">⇄</div>
+            <div class="char-box">
+              <div class="char-label">简体</div>
+              <div class="big-char simplified" id="simpDisplay">学</div>
+            </div>
+          </div>
+
+          <div class="meaning-section">
+            <div class="meaning-title">📖 字义解释</div>
+            <div class="meaning-text" id="meaningDisplay">—</div>
+          </div>
+        </div>
+
+        <div class="trace-card">
+          <div class="trace-header">
+            <h2>✍️ 描红练习</h2>
+            <button class="btn-clear" id="clearBtn">清除重写</button>
+          </div>
+          <div class="canvas-wrapper">
+            <canvas id="traceCanvas" width="600" height="600"></canvas>
+            <div class="grid-overlay"></div>
+          </div>
+          <div class="hint">👆 用手指或鼠标在灰色字上描写</div>
+        </div>
+      </div>
+
+      <div class="pagination">
+        <button id="prevBtn">◀ 上一页</button>
+        <span class="page-info" id="pageInfo">第 1 / 1 页</span>
+        <button id="nextBtn">下一页 ▶</button>
+      </div>
+
+      <div class="char-grid" id="charGrid"></div>
+    </div>
+
+    <div class="footer-note">—— 静心描摹，体会繁体之美 ——</div>
+  </div>
+
+  <script src="hanzi-data.js"></script>
+
+  <script>
+    (function() {
+      let hanziData = {};
+      let charList = [];
+      let filteredList = [];
+      let currentPage = 1;
+      const PAGE_SIZE = 40;
+      let currentChar = null;
+
+      const loadingMsg = document.getElementById('loadingMsg');
+      const errorMsg = document.getElementById('errorMsg');
+      const mainContent = document.getElementById('mainContent');
+      const tradDisplay = document.getElementById('tradDisplay');
+      const simpDisplay = document.getElementById('simpDisplay');
+      const meaningDisplay = document.getElementById('meaningDisplay');
+      const canvas = document.getElementById('traceCanvas');
+      const ctx = canvas.getContext('2d');
+      const clearBtn = document.getElementById('clearBtn');
+      const searchInput = document.getElementById('searchInput');
+      const searchBtn = document.getElementById('searchBtn');
+      const charGrid = document.getElementById('charGrid');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const pageInfo = document.getElementById('pageInfo');
+
+      const CANVAS_SIZE = 600;
+      canvas.width = CANVAS_SIZE;
+      canvas.height = CANVAS_SIZE;
+
+      let isDrawing = false;
+      let lastX = 0, lastY = 0;
+
+      function init() {
+        if (!window.HANZI_DATA) {
+          loadingMsg.style.display = 'none';
+          errorMsg.style.display = 'block';
+          errorMsg.innerHTML = '❌ 找不到字库数据，请确认 hanzi-data.js 已正确加载。';
+          return;
+        }
+
+        hanziData = window.HANZI_DATA;
+        charList = Object.keys(hanziData).sort((a, b) => a.localeCompare(b, 'zh-Hant'));
+        filteredList = charList.slice();
+
+        loadingMsg.style.display = 'none';
+        mainContent.style.display = 'block';
+
+        if (charList.length > 0) {
+          switchCharacter(charList[0]);
+        }
+
+        renderGrid();
+        updatePagination();
+      }
+
+      function updateInfoPanel(char) {
+        const data = hanziData[char];
+        if (!data) return;
+        tradDisplay.textContent = char;
+        simpDisplay.textContent = data.simplified || '—';
+
+        const pinyinStr = (data.pinyin && data.pinyin.length)
+          ? `<span class="pinyin">拼音：${data.pinyin.join(' / ')}</span>`
+          : '';
+
+        let meaningStr;
+        if (!data.meaning || data.meaning === '无' || data.meaning.trim() === '') {
+          meaningStr = '<span style="color:#a78b74;">无</span>';
+        } else {
+          meaningStr = data.meaning;
+        }
+
+        meaningDisplay.innerHTML = pinyinStr + meaningStr;
+      }
+
+      function drawGuideCharacter() {
+        ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+        ctx.fillStyle = '#fffcf7';
+        ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+
+        // 田字格辅助线
+        ctx.strokeStyle = '#e5d8c6';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(CANVAS_SIZE / 2, 0);
+        ctx.lineTo(CANVAS_SIZE / 2, CANVAS_SIZE);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(0, CANVAS_SIZE / 2);
+        ctx.lineTo(CANVAS_SIZE, CANVAS_SIZE / 2);
+        ctx.stroke();
+
+        if (!currentChar) return;
+
+        // 楷体（非毛笔）
+        ctx.font = '380px "KaiTi", "楷体", "Noto Serif TC", "SimSun", "宋体", serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#d9cdbc';
+        ctx.fillText(currentChar, CANVAS_SIZE / 2, CANVAS_SIZE / 2 + 20);
+
+        // 描边
+        ctx.strokeStyle = '#d0bea8';
+        ctx.lineWidth = 2;
+        ctx.strokeText(currentChar, CANVAS_SIZE / 2, CANVAS_SIZE / 2 + 20);
+      }
+
+      function switchCharacter(char) {
+        if (!hanziData[char]) return;
+        currentChar = char;
+        updateInfoPanel(char);
+        drawGuideCharacter();
+        isDrawing = false;
+        highlightActiveButton();
+      }
+
+      function highlightActiveButton() {
+        document.querySelectorAll('.char-btn').forEach(btn => {
+          if (btn.dataset.char === currentChar) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+
+      function renderGrid() {
+        charGrid.innerHTML = '';
+        const start = (currentPage - 1) * PAGE_SIZE;
+        const end = start + PAGE_SIZE;
+        const pageItems = filteredList.slice(start, end);
+
+        if (pageItems.length === 0) {
+          charGrid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:20px; color:#a78b74;">没有找到匹配的字</div>';
+          return;
+        }
+
+        pageItems.forEach(char => {
+          const btn = document.createElement('button');
+          btn.className = 'char-btn';
+          btn.dataset.char = char;
+          btn.textContent = char;
+          if (char === currentChar) btn.classList.add('active');
+          btn.addEventListener('click', () => {
+            switchCharacter(char);
+          });
+          charGrid.appendChild(btn);
+        });
+
+        const activeBtn = charGrid.querySelector('.char-btn.active');
+        if (activeBtn) {
+          activeBtn.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+      }
+
+      function updatePagination() {
+        const totalPages = Math.max(1, Math.ceil(filteredList.length / PAGE_SIZE));
+        if (currentPage > totalPages) currentPage = totalPages;
+        if (currentPage < 1) currentPage = 1;
+
+        pageInfo.textContent = `第 ${currentPage} / ${totalPages} 页（共 ${filteredList.length} 字）`;
+        prevBtn.disabled = currentPage <= 1;
+        nextBtn.disabled = currentPage >= totalPages;
+      }
+
+      function doSearch() {
+        const kw = searchInput.value.trim();
+        if (!kw) {
+          filteredList = charList.slice();
+        } else {
+          filteredList = charList.filter(char => {
+            if (char.includes(kw)) return true;
+            const simp = hanziData[char]?.simplified;
+            if (simp && simp.includes(kw)) return true;
+            return false;
+          });
+        }
+        currentPage = 1;
+        renderGrid();
+        updatePagination();
+
+        if (filteredList.length >= 1) {
+          switchCharacter(filteredList[0]);
+        }
+      }
+
+      searchBtn.addEventListener('click', doSearch);
+      searchInput.addEventListener('keypress', e => {
+        if (e.key === 'Enter') doSearch();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderGrid();
+          updatePagination();
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        const totalPages = Math.ceil(filteredList.length / PAGE_SIZE);
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderGrid();
+          updatePagination();
+        }
+      });
+
+      function getCanvasCoordinates(e) {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        let clientX, clientY;
+
+        if (e.touches) {
+          if (e.touches.length === 0) return null;
+          clientX = e.touches[0].clientX;
+          clientY = e.touches[0].clientY;
+          e.preventDefault();
+        } else {
+          clientX = e.clientX;
+          clientY = e.clientY;
+        }
+
+        return {
+          x: Math.min(Math.max((clientX - rect.left) * scaleX, 0), canvas.width),
+          y: Math.min(Math.max((clientY - rect.top) * scaleY, 0), canvas.height)
+        };
+      }
+
+      function startDrawing(e) {
+        e.preventDefault();
+        const coords = getCanvasCoordinates(e);
+        if (!coords) return;
+        isDrawing = true;
+        lastX = coords.x;
+        lastY = coords.y;
+        ctx.beginPath();
+        ctx.arc(lastX, lastY, 6, 0, Math.PI * 2);
+        ctx.fillStyle = '#3b2b1a';
+        ctx.fill();
+      }
+
+      function draw(e) {
+        e.preventDefault();
+        if (!isDrawing) return;
+        const coords = getCanvasCoordinates(e);
+        if (!coords) return;
+
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(coords.x, coords.y);
+        ctx.strokeStyle = '#3b2b1a';
+        ctx.lineWidth = 16;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+
+        lastX = coords.x;
+        lastY = coords.y;
+      }
+
+      function stopDrawing(e) {
+        e.preventDefault();
+        isDrawing = false;
+      }
+
+      clearBtn.addEventListener('click', drawGuideCharacter);
+
+      canvas.addEventListener('mousedown', startDrawing);
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mouseup', stopDrawing);
+      canvas.addEventListener('mouseleave', stopDrawing);
+      canvas.addEventListener('touchstart', startDrawing, { passive: false });
+      canvas.addEventListener('touchmove', draw, { passive: false });
+      canvas.addEventListener('touchend', stopDrawing);
+      canvas.addEventListener('touchcancel', stopDrawing);
+      canvas.addEventListener('contextmenu', e => e.preventDefault());
+
+      init();
+    })();
+  </script>
+</body>
+</html>
